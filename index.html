@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment.com Clone</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="navdiv">
+
+            <!-- LOGO -->
+            <div class="logo-area">
+                <img src="images/recycle.png" alt="" class="img1">
+                <h1 class="top">Apartment.com™</h1>
+            </div>
+
+            <!-- HAMBURGER MENU -->
+            <div class="toggle-btn" id="toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- NAV LINKS -->
+            <ul id="nav-links">
+
+                <li><a href="#">Manage Rentals</a></li>
+
+                <li><a href="#">Sign Up</a></li>
+
+                <li><a href="#">Sign In</a></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <div class="middle">
+
+        <h1>Discover Your New Home</h1>
+
+        <h3>Helping 100 million renters find their perfect fit.</h3>
+
+        <input type="search" placeholder="Chicago, IL">
+
+    </div>
+
+    <!-- =========================
+         PROPERTY SECTION
+    ========================== -->
+
+    <h2 class="cen1">Explore Rentals in Chicago, IL</h2>
+
+    <div class="all">
+
+        <!-- CARD 1 -->
+        <div class="pic1">
+
+            <a href="president.html">
+
+                <img src="images/presidential-towers-chicago-il-building-photo.jpg" alt="" class="img3">
+
+                <p class="cen">
+                    <big>Presidential Towers</big>
+                </p>
+
+                <p class="cen2">
+                    555 W Madison St,<br>
+                    Chicago, IL 60661
+                </p>
+
+                <p>&#36;1,685 - &#36;9,365</p>
+
+                <p>Studio - 2 Beds</p>
+
+            </a>
+
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="pic2">
+
+            <a href="regentpark.html">
+
+                <img src="images/regents-park-chicago-il-building-photo.jpg" alt="" class="img3">
+
+                <p class="cen">
+                    <big>Regent Park Apartments</big>
+                </p>
+
+                <p class="cen2">
+                    5035 S East End Ave,<br>
+                    Chicago, IL 60615
+                </p>
+
+                <p>&#36;1,775 - &#36;6,281</p>
+
+                <p>Studio - 4 Beds</p>
+
+            </a>
+
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="pic3">
+
+            <a href="shoreham.html">
+
+                <img src="images/shoreham-and-tides-chicago-il-building-photo.jpg" alt="" class="img3">
+
+                <p class="cen">
+                    <big>Shoreham and Tides</big>
+                </p>
+
+                <p class="cen2">
+                    400 E South Water St,<br>
+                    Chicago, IL 60601
+                </p>
+
+                <p>&#36;2,210 - &#36;7,469</p>
+
+                <p>Studio - 2 Beds</p>
+
+            </a>
+
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="pic4">
+
+            <a href="lake.html">
+
+                <img src="images/lake-meadows-apartments-chicago-il-building-photo.jpg" alt="" class="img3">
+
+                <p class="cen">
+                    <big>Lake Meadows Apartments</big>
+                </p>
+
+                <p class="cen2">
+                    3233 S King,<br>
+                    Chicago, IL 60616
+                </p>
+
+                <p>&#36;999 - &#36;4,052</p>
+
+                <p>Studio - 3 Beds</p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- BUTTON -->
+
+    <button type="submit">View More</button>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        const toggleBtn = document.getElementById("toggle-btn");
+        const navLinks = document.getElementById("nav-links");
+
+        toggleBtn.addEventListener("click", () => {
+
+            toggleBtn.classList.toggle("active");
+
+            navLinks.classList.toggle("active");
+
+        });
+
+    </script>
+
+</body>
+</html>
