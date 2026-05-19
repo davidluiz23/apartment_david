@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Apartment.com</title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+            width: 100%;
+            background: white;
+            padding: 15px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .navdiv{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .img1{
+            width: 50px;
+        }
+
+        .top{
+            font-size: 22px;
+            color: #007882;
+        }
+
+        #nav-links{
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        #nav-links li a{
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+        }
+
+        /* ================= HAMBURGER ================= */
+
+        .toggle-btn{
+            width: 35px;
+            height: 28px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .toggle-btn span{
+            height: 4px;
+            width: 100%;
+            background: #222;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .toggle-btn.active span:nth-child(1){
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .toggle-btn.active span:nth-child(2){
+            opacity: 0;
+        }
+
+        .toggle-btn.active span:nth-child(3){
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+
+        /* ================= SIGN UP FORM ================= */
+
+        .signup-container{
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .signup-box{
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .signup-box h1{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007882;
+        }
+
+        .signup-box input{
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .signup-box input:focus{
+            border-color: #007882;
+        }
+
+        .signup-box button{
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: #007882;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .signup-box button:hover{
+            background: #005d63;
+        }
+
+        .signup-box p{
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup-box a{
+            color: #007882;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px){
+
+            .toggle-btn{
+                display: flex;
+            }
+
+            #nav-links{
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                transition: 0.4s;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            #nav-links.active{
+                left: 0;
+            }
+
+            #nav-links li{
+                margin: 20px 0;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="navdiv">
+
+        <div class="logo-area">
+            <img src="images/recycle.png" class="img1">
+            <h1 class="top">Apartment.com™</h1>
+        </div>
+
+        <div class="toggle-btn" id="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+<!-- ================= SIGN UP FORM ================= -->
+
+<div class="signup-container">
+
+    <div class="signup-box">
+
+        <h1>Create Account</h1>
+
+        <form>
+
+            <input type="text" placeholder="Full Name" required>
+
+            <input type="email" placeholder="Email Address" required>
+
+            <input type="password" placeholder="Password" required>
+
+            <input type="password" placeholder="Confirm Password" required>
+
+            <button type="submit">Sign Up</button>
+
+        </form>
+
+        <p>Already have an account? <a href="signin.html">Sign In</a></p>
+
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+
+    const toggleBtn = document.getElementById("toggle-btn");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+        toggleBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
+    });
+
+</script>
+
+</body>
+</html>
