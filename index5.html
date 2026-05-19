@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoreham and Tides</title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <style>
+
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+            width: 100%;
+            background: white;
+            padding: 15px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .navdiv{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .img1{
+            width: 50px;
+        }
+
+        .top{
+            font-size: 22px;
+            color: #007882;
+        }
+
+        #nav-links{
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        #nav-links li a{
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+        }
+
+        /* ================= HAMBURGER ================= */
+
+        .toggle-btn{
+            width: 35px;
+            height: 28px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .toggle-btn span{
+            height: 4px;
+            width: 100%;
+            background: #222;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .toggle-btn.active span:nth-child(1){
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .toggle-btn.active span:nth-child(2){
+            opacity: 0;
+        }
+
+        .toggle-btn.active span:nth-child(3){
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+
+        /* ================= LAYOUT ================= */
+
+        .container{
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .image{
+            flex: 1;
+        }
+
+        .image img{
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .details{
+            flex: 1;
+        }
+
+        .details h1{
+            font-size: 40px;
+        }
+
+        .location{
+            color: #666;
+        }
+
+        .price{
+            color: #007882;
+            font-size: 28px;
+        }
+
+        .desc{
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .btn{
+            margin-top: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 40px;
+            background: #007882;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            background: #005d63;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px){
+
+            .toggle-btn{
+                display: flex;
+            }
+
+            #nav-links{
+                position: absolute;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                transition: 0.4s;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            #nav-links.active{
+                left: 0;
+            }
+
+            #nav-links li{
+                margin: 20px 0;
+            }
+
+            .container{
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .details h1{
+                font-size: 30px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="navdiv">
+
+        <div class="logo-area">
+            <img src="images/recycle.png" class="img1">
+            <h1 class="top">Apartment.com™</h1>
+        </div>
+
+        <div class="toggle-btn" id="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+<!-- ================= CONTENT ================= -->
+
+<div class="container">
+
+    <div class="image">
+        <img src="images/shoreham-and-tides-chicago-il-building-photo.jpg" alt="">
+    </div>
+
+    <div class="details">
+
+        <h1>Shoreham and Tides</h1>
+
+        <p class="location">400 E South Water St, Chicago, IL 60601</p>
+
+        <p class="price">$2,210 – $7,469 / month</p>
+
+        <p class="desc">
+            Shoreham and Tides offers luxury lakefront living in downtown Chicago.
+            With breathtaking views of Lake Michigan and the city skyline, it provides a premium lifestyle experience.
+        </p>
+
+        <p class="desc">
+            The building includes modern apartments, fitness facilities, swimming pools, and easy access to downtown attractions.
+        </p>
+
+        <button class="btn">Apply Now</button>
+
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+
+    const toggleBtn = document.getElementById("toggle-btn");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+        toggleBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
+    });
+
+</script>
+
+</body>
+</html>
