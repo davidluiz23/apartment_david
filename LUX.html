@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Studio - Presidential Towers</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: #f5f7fa;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+            width: 100%;
+            background: white;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .navdiv{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .img1{
+            width: 50px;
+        }
+
+        .top{
+            color: #007882;
+            font-size: 25px;
+        }
+
+        #nav-links{
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        #nav-links li a{
+            text-decoration: none;
+            color: #222;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        #nav-links li a:hover{
+            color: #007882;
+        }
+
+        /* ================= MENU ================= */
+
+        .toggle-btn{
+            width: 35px;
+            height: 28px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .toggle-btn span{
+            width: 100%;
+            height: 4px;
+            background: #222;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .toggle-btn.active span:nth-child(1){
+            transform: rotate(45deg) translate(7px,7px);
+        }
+
+        .toggle-btn.active span:nth-child(2){
+            opacity: 0;
+        }
+
+        .toggle-btn.active span:nth-child(3){
+            transform: rotate(-45deg) translate(8px,-8px);
+        }
+
+        /* ================= HERO ================= */
+
+        .hero{
+            width: 100%;
+            height: 60vh;
+            background:
+            linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            url("images/presidential-towers-chicago-il-building-photo.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h1{
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p{
+            font-size: 20px;
+        }
+
+        /* ================= DESCRIPTION ================= */
+
+        .description{
+            width: 85%;
+            margin: 60px auto;
+            text-align: center;
+        }
+
+        .description h2{
+            font-size: 35px;
+            margin-bottom: 20px;
+            color: #007882;
+        }
+
+        .description p{
+            line-height: 1.8;
+            color: #555;
+            font-size: 18px;
+        }
+
+        /* ================= GALLERY ================= */
+
+        .gallery-title{
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 40px;
+            color: #222;
+        }
+
+        .gallery{
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .gallery img{
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery img:hover{
+            transform: scale(1.03);
+        }
+
+        /* ================= INFO SECTION ================= */
+
+        .info{
+            width: 90%;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 70px;
+        }
+
+        .info h2{
+            color: #007882;
+            margin-bottom: 20px;
+        }
+
+        .info ul{
+            line-height: 2;
+            color: #444;
+        }
+
+        .btn{
+            margin-top: 30px;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 40px;
+            background: #007882;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover{
+            background: #005d63;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer{
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* ================= MEDIA QUERY ================= */
+
+        @media(max-width: 992px){
+
+            .gallery{
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+        @media(max-width: 768px){
+
+            .toggle-btn{
+                display: flex;
+            }
+
+            #nav-links{
+                position: absolute;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                transition: 0.4s;
+            }
+
+            #nav-links.active{
+                left: 0;
+            }
+
+            #nav-links li{
+                margin: 20px 0;
+            }
+
+            .hero-content h1{
+                font-size: 38px;
+            }
+
+            .gallery{
+                grid-template-columns: 1fr;
+            }
+
+            .description h2,
+            .gallery-title{
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="navdiv">
+
+        <div class="logo-area">
+            <img src="images/recycle.png" alt="" class="img1">
+            <h1 class="top">Apartment.com™</h1>
+        </div>
+
+        <!-- MENU -->
+        <div class="toggle-btn" id="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- LINKS -->
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <h1>Luxury Studio</h1>
+
+        <p>Modern studio apartment with premium interiors and skyline views.</p>
+
+    </div>
+
+</div>
+
+<!-- ================= DESCRIPTION ================= -->
+
+<div class="description">
+
+    <h2>About This Apartment</h2>
+
+    <p>
+        The Luxury Studio at Presidential Towers offers a modern and elegant lifestyle
+        in the center of Chicago. Designed with comfort and convenience in mind,
+        this apartment features spacious interiors, beautiful lighting, and premium finishes.
+        Residents enjoy access to fitness centers, security services, parking, and nearby shopping areas.
+    </p>
+
+</div>
+
+<!-- ================= GALLERY ================= -->
+
+<h1 class="gallery-title">Apartment Gallery</h1>
+
+<div class="gallery">
+
+    <img src="IMG_001.WEBP">
+    <img src="IMG_002.WEBP">
+    <img src="IMG_003.WEBP">
+    <img src="IMG_004.WEBP">
+    <img src="IMG_005.WEBP">
+    <img src="IMG_006.WEBP">
+    <img src="IMG_007.WEBP">
+    <img src="IMG_008.WEBP">
+    <img src="IMG_009.WEBP">
+
+</div>
+
+<!-- ================= INFO ================= -->
+
+<div class="info">
+
+    <h2>Apartment Features</h2>
+
+    <ul>
+        <li>✔ Spacious Studio Layout</li>
+        <li>✔ High-Speed Internet</li>
+        <li>✔ Modern Kitchen</li>
+        <li>✔ 24/7 Security</li>
+        <li>✔ Swimming Pool Access</li>
+        <li>✔ Fitness Center</li>
+        <li>✔ Parking Garage</li>
+        <li>✔ Pet Friendly</li>
+        <li>✔ Skyline City Views</li>
+    </ul>
+
+    <button class="btn">Book Viewing</button>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>© 2026 Apartment.com™ | All Rights Reserved</p>
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    const toggleBtn = document.getElementById("toggle-btn");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+
+        toggleBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
+
+    });
+
+</script>
+
+</body>
+</html>
