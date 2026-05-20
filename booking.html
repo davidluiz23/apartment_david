@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Apartment - Apartment.com</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: #f5f7fa;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+            width: 100%;
+            background: white;
+            padding: 18px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .navdiv{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .img1{
+            width: 50px;
+        }
+
+        .top{
+            color: #007882;
+            font-size: 25px;
+        }
+
+        #nav-links{
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        #nav-links li a{
+            text-decoration: none;
+            color: #222;
+            font-weight: 600;
+        }
+
+        /* ================= MENU ================= */
+
+        .toggle-btn{
+            width: 35px;
+            height: 28px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .toggle-btn span{
+            width: 100%;
+            height: 4px;
+            background: #222;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .toggle-btn.active span:nth-child(1){
+            transform: rotate(45deg) translate(7px,7px);
+        }
+
+        .toggle-btn.active span:nth-child(2){
+            opacity: 0;
+        }
+
+        .toggle-btn.active span:nth-child(3){
+            transform: rotate(-45deg) translate(8px,-8px);
+        }
+
+        /* ================= BOOKING FORM ================= */
+
+        .booking-container{
+            width: 100%;
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .booking-box{
+            width: 100%;
+            max-width: 550px;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-box h1{
+            text-align: center;
+            margin-bottom: 25px;
+            color: #007882;
+        }
+
+        .booking-box input,
+        .booking-box select,
+        .booking-box textarea{
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .booking-box textarea{
+            resize: none;
+            height: 120px;
+        }
+
+        .booking-btn{
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 40px;
+            background: #007882;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .booking-btn:hover{
+            background: #005d63;
+        }
+
+        /* ================= SUCCESS ANIMATION ================= */
+
+        .success-box{
+            position: absolute;
+            inset: 0;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transform: scale(0);
+            transition: 0.5s;
+        }
+
+        .success-box.active{
+            transform: scale(1);
+        }
+
+        .check{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #00b894;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 50px;
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop{
+
+            0%{
+                transform: scale(0);
+            }
+
+            100%{
+                transform: scale(1);
+            }
+
+        }
+
+        .success-box h2{
+            margin-top: 20px;
+            color: #007882;
+        }
+
+        .success-box p{
+            margin-top: 10px;
+            color: #555;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 768px){
+
+            .toggle-btn{
+                display: flex;
+            }
+
+            #nav-links{
+                position: absolute;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 0;
+                transition: 0.4s;
+            }
+
+            #nav-links.active{
+                left: 0;
+            }
+
+            #nav-links li{
+                margin: 20px 0;
+            }
+
+            .booking-box{
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="navdiv">
+
+        <div class="logo-area">
+            <img src="images/recycle.png" alt="" class="img1">
+            <h1 class="top">Apartment.com™</h1>
+        </div>
+
+        <!-- MENU -->
+        <div class="toggle-btn" id="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- LINKS -->
+        <ul id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+<!-- ================= BOOKING FORM ================= -->
+
+<div class="booking-container">
+
+    <div class="booking-box">
+
+        <h1>Book An Apartment</h1>
+
+        <form id="bookingForm">
+
+            <input type="text" placeholder="Full Name" required>
+
+            <input type="email" placeholder="Email Address" required>
+
+            <input type="tel" placeholder="Phone Number" required>
+
+            <select required>
+                <option value="">Choose Apartment</option>
+                <option>Luxury Studio</option>
+                <option>Executive Suite</option>
+                <option>Family Apartment</option>
+                <option>City Penthouse</option>
+            </select>
+
+            <input type="date" required>
+
+            <textarea placeholder="Additional Message"></textarea>
+
+            <button type="submit" class="booking-btn">
+                Book Now
+            </button>
+
+        </form>
+
+        <!-- SUCCESS ANIMATION -->
+
+        <div class="success-box" id="successBox">
+
+            <div class="check">✓</div>
+
+            <h2>Booking Successful!</h2>
+
+            <p>
+                Your apartment booking request has been submitted successfully.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    // MENU
+
+    const toggleBtn = document.getElementById("toggle-btn");
+    const navLinks = document.getElementById("nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+
+        toggleBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
+
+    });
+
+    // BOOKING ANIMATION
+
+    const bookingForm = document.getElementById("bookingForm");
+    const successBox = document.getElementById("successBox");
+
+    bookingForm.addEventListener("submit", function(e){
+
+        e.preventDefault();
+
+        successBox.classList.add("active");
+
+    });
+
+</script>
+
+</body>
+</html>
