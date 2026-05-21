@@ -1,1 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Rentals Dashboard</title>
 
+<style>
+
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+/* ================= WRAPPER ================= */
+.wrapper{
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#007882;
+    color:white;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:20px;
+    transition:0.4s;
+}
+
+.sidebar h2{
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin:8px 0;
+    border-radius:10px;
+}
+
+.sidebar a:hover{
+    background:rgba(255,255,255,0.2);
+}
+
+/* ================= MAIN ================= */
+.main{
+    margin-left:250px;
+    width:100%;
+    padding:20px;
+}
+
+.menu-btn{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+
+/* ================= TOP CARDS ================= */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+/* ================= SECTIONS ================= */
+.section-title{
+    margin:40px 0 15px;
+}
+
+/* ================= APARTMENTS ================= */
+.apartments{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.apartment{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.apartment img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.apartment-content{
+    padding:15px;
+}
+
+.btn{
+    padding:10px 15px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.edit{
+    background:#007882;
+    color:white;
+}
+
+.delete{
+    background:#e74c3c;
+    color:white;
+}
+
+/* ================= TABLE ================= */
+table{
+    width:100%;
+    background:white;
+    border-collapse:collapse;
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th,td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+th{
+    background:#007882;
+    color:white;
+}
+
+/* ================= ADD BUTTON ================= */
+.add-btn{
+    background:#007882;
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+/* ================= MODAL ================= */
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    width:400px;
+}
+
+.modal input, .modal textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:22px;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+
+    .sidebar{
+        left:-260px;
+        z-index:1000;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .apartments{
+        grid-template-columns:1fr;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar" id="sidebar">
+
+    <h2>Manage Rentals</h2>
+
+    <a href="#dashboard">Dashboard</a>
+    <a href="#properties">Properties</a>
+    <a href="#bookings">Bookings</a>
+    <a href="index.html">Back to Site</a>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+
+    <div class="menu-btn" onclick="toggleMenu()">☰ Menu</div>
+
+    <!-- ================= DASHBOARD ================= -->
+    <h1 id="dashboard">Dashboard Overview</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>12</h2>
+            <p>Apartments</p>
+        </div>
+
+        <div class="card">
+            <h2>8</h2>
+            <p>Active Rentals</p>
+        </div>
+
+        <div class="card">
+            <h2>23</h2>
+            <p>Bookings</p>
+        </div>
+
+        <div class="card">
+            <h2>$12,400</h2>
+            <p>Revenue</p>
+        </div>
+
+    </div>
+
+    <!-- ================= PROPERTIES ================= -->
+    <h2 class="section-title" id="properties">Manage Apartments</h2>
+
+    <button class="add-btn" onclick="openModal()">+ Add Property</button>
+
+    <div class="apartments">
+
+        <div class="apartment">
+            <img src="images/rent2.jpeg">
+            <div class="apartment-content">
+                <h3>Luxury Studio</h3>
+                <p>$1,685/month</p>
+                <button class="btn edit">Edit</button>
+                <button class="btn delete" onclick="deleteApartment(this)">Delete</button>
+            </div>
+        </div>
+
+        <div class="apartment">
+            <img src="images/adv2.jpeg">
+            <div class="apartment-content">
+                <h3>Executive Suite</h3>
+                <p>$2,450/month</p>
+                <button class="btn edit">Edit</button>
+                <button class="btn delete" onclick="deleteApartment(this)">Delete</button>
+            </div>
+        </div>
+
+        <div class="apartment">
+            <img src="images/take.jpeg">
+            <div class="apartment-content">
+                <h3>City Penthouse</h3>
+                <p>$6,500/month</p>
+                <button class="btn edit">Edit</button>
+                <button class="btn delete" onclick="deleteApartment(this)">Delete</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= BOOKINGS ================= -->
+    <h2 class="section-title" id="bookings">Booking Requests</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Apartment</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>David</td>
+            <td>Luxury Studio</td>
+            <td>May 21</td>
+            <td>Pending</td>
+        </tr>
+
+        <tr>
+            <td>Sarah</td>
+            <td>Executive Suite</td>
+            <td>May 22</td>
+            <td>Approved</td>
+        </tr>
+
+    </table>
+
+</div>
+
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <span class="close" onclick="closeModal()">×</span>
+
+        <h2>Add Property</h2>
+
+        <input type="text" placeholder="Property Name">
+        <input type="text" placeholder="Price">
+        <input type="text" placeholder="Location">
+        <textarea placeholder="Description"></textarea>
+
+        <button class="add-btn">Save Property</button>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+function openModal(){
+    document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+function deleteApartment(button){
+    button.closest(".apartment").remove();
+}
+
+</script>
+
+</body>
+</html>
