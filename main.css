@@ -347,7 +347,12 @@ button:hover{
     .cen1{
         font-size: 30px;
     }
+    
+    .view{
+        text-align:center;
+    }
 }
+
 
 /* =========================
    SMALL MOBILE
