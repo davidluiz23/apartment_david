@@ -374,6 +374,9 @@ button:hover{
 
     .img1{
         width: 45px;
-        height: 45px;
+        }
+    .view{
+        text-align:center;
     }
 }
+
