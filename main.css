@@ -275,7 +275,7 @@ button:hover{
     transform: scale(1.05);
 }
 
-.btn{
+.view{
     display:inline-block;
     padding:12px 25px;
     background:#007882;
@@ -286,7 +286,7 @@ button:hover{
     transition:0.3s;
 }
 
-.btn:hover{
+.view:hover{
     background:#005d63;
 }
 
